@@ -77,6 +77,7 @@ bool Parser::processCommand(char* str, Player* player) {
      if ((player->validItem(input) == true) && (player->keyItem(input) == true)) {
        cout << "Congrats, you have beat the game \n";
        return true;
+       exit(0);
      }
      else {
        cout << "The item you chose you either don't have or is not the right one \n";

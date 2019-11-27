@@ -1,3 +1,6 @@
+//This program is a Zuul game, in where the user has to go through Sunset High School and find an item and bring it back to room 1-20. They can use the functions of go, take, drop, and quit, along with using other functions to gain more added information
+// Ethan Wang
+// 11/26/19
 #include <iostream>
 #include <string>
 #include "Room.h"
@@ -7,6 +10,7 @@
 using namespace std;
 
 int main() {
+  // Initializes Rooms
   Parser parser;
   char input[50];
   bool stillPlay = true;
@@ -59,6 +63,7 @@ int main() {
   Room* room44 = new Room();
   strcpy(room44->getName(), "1-20");
   strcpy(room44->getExplanation(), "Ironically, the only place in the whole school I don't do any coding");
+  //Initializes Exits
   room11->getExits()->insert(pair<const char*, Room*>("east", room12));
   room11->getExits()->insert(pair<const char*, Room*>("south", room21));
   room12->getExits()->insert(pair<const char*, Room*>("west", room11));
@@ -112,7 +117,7 @@ int main() {
   room44->getExits()->insert(pair<const char*, Room*>("west", room43));
 
   Player* p = new Player(room44);
-
+  // Intializes Items
   Item* FrenchHomework = new Item((char*)"French Homework");
   room11->addItem(FrenchHomework);
   Item* Tuba = new Item((char*)"Tuba");
@@ -131,6 +136,7 @@ int main() {
   room41->addItem(WaterBottle);
   Item* Margins = new Item((char*)"Margins of 0.5 Inches");
   room43->addItem(Margins);
+  // Operates the Parser function, just a simple input and way to exit the game. 
   while(stillPlay) {
     cin.get(input, 50);
     cin.clear();

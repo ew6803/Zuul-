@@ -18,7 +18,8 @@ char* Parser::substr(char* str, int start, int end) {
   }
   return sub;
 }
-
+//Functions that respond to user inputs
+//Move functions
 bool Parser::processCommand(char* str, Player* player) {
   if (strncmp(str, "go ", 3) == 0) {
   char* direction = substr(str, 3, strlen(str) + 1);
@@ -33,6 +34,7 @@ bool Parser::processCommand(char* str, Player* player) {
 }
 
 }
+  //Pick up functions
  else if(strncmp(str, "take ", 5) == 0) {
    char* ItemName = substr(str, 5, strlen(str) + 1);
    if(player->getCurrentRoom()->validItem(ItemName)) {
@@ -44,6 +46,7 @@ bool Parser::processCommand(char* str, Player* player) {
      
    }
  }
+  //Drop function
  else if(strncmp(str, "drop ", 5) == 0) {
    char* ItemName = substr(str, 5, strlen(str) + 1);
    if(player->validItem(ItemName)) {
@@ -56,6 +59,7 @@ bool Parser::processCommand(char* str, Player* player) {
        }
 
  }
+  //Extra information
  else if(strcmp(str, "help") == 0) {
    cout << "You are at sunset, and you are on a quest to find a mystery item for Mr. Galbraith. Bring it back to him. GL!";
 
@@ -63,12 +67,14 @@ bool Parser::processCommand(char* str, Player* player) {
  else if(strcmp(str, "inventory") == 0)  {
    player->printInventory();
  }
+ 
  else if(strcmp(str, "exits") == 0) {
    player->getCurrentRoom()->getExitDirections();
  }
  else if(strcmp(str, "items") == 0) {
    player->getCurrentRoom() -> printItems();
  }
+  //To win the game, you must enter checkwin and then the ite. The code will check if you indeed have the item and decide if yo uwon
  else if(strcmp(str, "checkwin") == 0) {
    if(strcmp(player->getCurrentRoom()->getName(), "1-20") == 0) {
      cout << "Ah, you are back. What is the secret item? \n";
@@ -90,6 +96,7 @@ bool Parser::processCommand(char* str, Player* player) {
  }
   
  }
+  //Exit the room
  else if (strcmp(str, "exit") == 0) {
    cout << "Thanks for playing my game.";
    exit(0);

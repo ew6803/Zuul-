@@ -118,7 +118,7 @@ int main() {
   Item* Tuba = new Item((char*)"Tuba");
   room33->addItem(Tuba);
   Item* Calculator = new Item((char*)"TI Nspire");
-  room11->addItem(Calculator);
+  room32->addItem(Calculator);
   Item* Sandwich = new Item((char*)"Half Eated Sandwich");
   room22->addItem(Sandwich);
   Item* Ball = new Item((char*)"Deflated Basketball");
