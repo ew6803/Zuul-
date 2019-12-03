@@ -20,13 +20,13 @@ char* Parser::substr(char* str, int start, int end) {
 }
 //Functions that respond to user inputs
 //Move functions
-bool Parser::processCommand(char* str, Player* player) {
-  if (strncmp(str, "go ", 3) == 0) {
+void Parser::processCommand(char* str, Player* player) {
+   if (strncmp(str, "go ", 3) == 0) {
   char* direction = substr(str, 3, strlen(str) + 1);
   if(player->getCurrentRoom()->isValidRoom(direction)) {
     player->setCurrentRoom(player->getCurrentRoom()->getExitRoom(direction));
-    //cout << player->getName() -> endl;
-    cout << player->getCurrentRoom() -> getExplanation() << endl;
+    cout << player->getCurrentRoom()->getName() << endl;
+    cout << player->getCurrentRoom()->getExplanation() << endl;
     delete direction;
     }
   else {
@@ -61,7 +61,7 @@ bool Parser::processCommand(char* str, Player* player) {
  }
   //Extra information
  else if(strcmp(str, "help") == 0) {
-   cout << "You are at sunset, and you are on a quest to find a mystery item for Mr. Galbraith. Bring it back to him. GL!";
+   cout << "You are at sunset, and you are on a quest to find a mystery item for Mr. Galbraith. Bring it back to him. GL!" << endl;
 
  }
  else if(strcmp(str, "inventory") == 0)  {
@@ -74,7 +74,7 @@ bool Parser::processCommand(char* str, Player* player) {
  else if(strcmp(str, "items") == 0) {
    player->getCurrentRoom() -> printItems();
  }
-  //To win the game, you must enter checkwin and then the ite. The code will check if you indeed have the item and decide if yo uwon
+  //To win the game, you must enter checkwin and then the ite. The code will check if you indeed have the item and decide if you won
  else if(strcmp(str, "checkwin") == 0) {
    if(strcmp(player->getCurrentRoom()->getName(), "1-20") == 0) {
      cout << "Ah, you are back. What is the secret item? \n";
@@ -82,7 +82,6 @@ bool Parser::processCommand(char* str, Player* player) {
      cin.getline(input, 50);
      if ((player->validItem(input) == true) && (player->keyItem(input) == true)) {
        cout << "Congrats, you have beat the game \n";
-       return true;
        exit(0);
      }
      else {
@@ -104,6 +103,5 @@ bool Parser::processCommand(char* str, Player* player) {
 
  else {
    cout << "Enter a valid command plz." << endl; 
- }
-  return true; 
+ } 
 }

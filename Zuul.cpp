@@ -14,7 +14,7 @@ int main() {
   Parser parser;
   char input[50];
   bool stillPlay = true;
-  cout << "Unfortunately for you, the all knowing Mr. Galbraith has caught you watching league of legends in class. He orders you to go find something productive to do, go search the school for something good enough to do.";
+  cout << "Unfortunately for you, the all knowing Mr. Galbraith has caught you watching league of legends in class. He orders you to go find something productive to do, go search the school for something good enough to do." << endl;
   Room* room11 = new Room();
   strcpy(room11->getName(), "French Room");
   strcpy(room11->getExplanation(), "There seems to be an odd amount of cheese in this room");
@@ -137,11 +137,11 @@ int main() {
   Item* Margins = new Item((char*)"Margins of 0.5 Inches");
   room43->addItem(Margins);
   // Operates the Parser function, just a simple input and way to exit the game. 
-  while(stillPlay) {
+  while(stillPlay == true) {
     cin.get(input, 50);
     cin.clear();
     cin.ignore(1000, '\n');
-    stillPlay = parser.processCommand(input,p);
+    parser.processCommand(input, p);
   }
   
   return 0;
