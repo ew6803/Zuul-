@@ -92,6 +92,6 @@ void Room::getExitDirections() {
     cout << it-> first << " ";
     i++;
   }
-  cout << "/n";
+  cout << "\n";
 
 }
