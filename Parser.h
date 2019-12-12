@@ -10,7 +10,7 @@
 
 class Parser {
  public:
-  bool processCommand(char*, Player*);
+  void processCommand(char*, Player*);
  private:
   char* substr(char*, int, int);
 
